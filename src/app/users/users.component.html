@@ -1,0 +1,37 @@
+<h2>Users</h2>
+<!-- <ul class="users"> -->
+<!-- 	<li *ngFor="let user of users" [class.selected]="user === selectedUser" -->
+<!-- 		(click)="onSelect(user)"> -->
+<!-- 		<a routerLink="/detail/{{user.id}}"> -->
+<!-- 			<span class="badge">{{user.id}}</span> {{user.name}} -->
+<!-- 		</a> -->
+<!-- 	</li> -->
+<!-- </ul> -->
+
+<mat-nav-list style="width: 30%;"> 
+	<a mat-list-item
+		*ngFor="let user of users" routerLink="/detail/{{user.id}}"> 
+		<span>{{user.id}} - {{user.name}}</span>
+	</a> 
+</mat-nav-list>
+
+<div>
+<mat-form-field class="example-full-width"> 
+<input  #userName matInput placeholder="User name: " />
+</mat-form-field>
+
+<button mat-raised-button (click)="add(userName.value); userName.value=''">Add</button>
+</div>
+
+
+<!-- <div> -->
+<!--   <label>User name: -->
+<!--     <input #userName /> -->
+<!--   </label> -->
+
+
+ 	<!-- (click) passes input value to add() and then clears the input -->
+<!--   <button (click)="add(userName.value); userName.value=''"> -->
+<!--     add -->
+<!--   </button> -->
+<!-- </div> -->
