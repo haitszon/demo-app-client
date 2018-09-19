@@ -27,8 +27,8 @@ export class UserService {
 
   getUsers(): Observable<User[]> {
 
-    // TODO: send the message _after_ fetching the heroes
-//    this.messageService.add('UserService: fetched heroes');
+    // TODO: send the message _after_ fetching the users
+//    this.messageService.add('UserService: fetched users');
     //return of(USERS);
     return this.http.get<User[]>(this.apiUrl + 'getUsers')
       .pipe(tap(users => this.log('Fetched users')),
@@ -36,9 +36,9 @@ export class UserService {
   }
 
   getUser(id: number): Observable<User> {
-    // TODO: send the message _after_ fetching the hero
+    // TODO: send the message _after_ fetching the user
 //    this.messageService.add(`UserService: fetched user id=${id}`);  
-    //return of(USERS.find(hero => hero.id === id));
+    //return of(USERS.find(user => user.id === id));
     return this.http.get<User>(this.apiUrl + 'getUserById/' + `${id}`).
       pipe(tap(_ => this.log(`Fetched user id=${id}`)),
            catchError(this.handleError<User>(`getUser id=${id}`)));
@@ -47,14 +47,14 @@ export class UserService {
   updateUser(user: User): Observable<any> {
       return this.http.put(this.apiUrl + 'updateUser', user, httpOptions).pipe(
       tap(_ => this.log(`Updated user id=${user.id}`)),
-      catchError(this.handleError<any>('updateHero'))
+      catchError(this.handleError<any>('updateUser'))
     );
   }
 
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.apiUrl + 'addUser', user, httpOptions).pipe(
       tap((user: User) => this.log(`added user w/ id=${user.id}`)),
-      catchError(this.handleError<User>('addHero'))
+      catchError(this.handleError<User>('addUser'))
     );
   }
 

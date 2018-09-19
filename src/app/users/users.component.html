@@ -16,11 +16,22 @@
 </mat-nav-list>
 
 <div>
-<mat-form-field class="example-full-width"> 
-<input  #userName matInput placeholder="User name: " />
-</mat-form-field>
+	<mat-form-field style="width: 30%"> 
+	<input
+		#userName matInput placeholder="User name: "
+		[formControl]="userFormControl" /> 
+	<mat-error
+		*ngIf="userFormControl.hasError('required')"> Email is <strong>required</strong>
+	</mat-error>
+	<button mat-button *ngIf="userName.value" matSuffix mat-icon-button
+		aria-label="Clear" (click)="userName.value=''">
+		<mat-icon>close</mat-icon>
+	</button>
+	</mat-form-field>
 
-<button mat-raised-button (click)="add(userName.value); userName.value=''">Add</button>
+
+
+	<button mat-raised-button (click)="add(userName.value); userName.value=''">Add</button>
 </div>
 
 

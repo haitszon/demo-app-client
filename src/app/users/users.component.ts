@@ -1,16 +1,24 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../user';
 import {UserService} from '../user.service';
+import { FormControl, FormGroupDirective, NgForm, Validators } from "@angular/forms";
+import { ErrorStateMatcher } from "@angular/material/core";
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
+  
+
 export class UsersComponent implements OnInit {
 
   users: User[];
 
+  userFormControl = new FormControl('', [
+    Validators.required
+  ]);
+  
   //  selectedUser: User;
   //
   //  onSelect(user: User): void {
@@ -35,6 +43,4 @@ export class UsersComponent implements OnInit {
         this.users.push(user);
       });
   }
-
-
 }
